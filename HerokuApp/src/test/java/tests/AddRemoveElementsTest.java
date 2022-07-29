@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddRemoveElements extends BaseTest {
+public class AddRemoveElementsTest extends BaseTest {
 
 
     @Test

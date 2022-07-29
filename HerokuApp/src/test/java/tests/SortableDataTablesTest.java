@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SortableDataTables extends BaseTest {
+public class SortableDataTablesTest extends BaseTest {
 
     @Test
     public void sortableDataTable1Test() {
