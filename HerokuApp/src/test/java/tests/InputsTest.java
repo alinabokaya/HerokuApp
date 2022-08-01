@@ -1,64 +1,57 @@
 package tests;
 
-import constants.Urls;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.pagefactorypages.InputsPage;
 
-public class InputsTest extends BaseTest{
+public class InputsTest extends BaseTest {
 
     @Test
     public void initialValueTest() {
 
-        driver.get(Urls.INPUTS_PAGE);
-        WebElement inputField = driver.findElement(By.xpath("//input[@type='number']"));
-        inputField.click();
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.clickInputField();
 
         //Add check
-        String initialValue = inputField.getAttribute("value");
-        Assert.assertEquals(initialValue, "", "Initial value is not empty !");
+        Assert.assertEquals(inputsPage.checkInitialValue(), "", "Initial value is not empty !");
     }
 
     @Test
     public void inputValueViaArrowUpTest() {
 
-        driver.get(Urls.INPUTS_PAGE);
-        WebElement inputField = driver.findElement(By.xpath("//input[@type='number']"));
-        inputField.click();
-        inputField.sendKeys(Keys.ARROW_UP);
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.clickInputField();
+        inputsPage.clickArrowUp();
 
         //Add check
-        String positiveValue = inputField.getAttribute("value");
-        Assert.assertEquals(positiveValue, "1", "Entered value is not 1!");
+        Assert.assertEquals(inputsPage.checkPositiveValue(), "1", "Entered value is not 1!");
     }
 
     @Test
     public void inputValueViaArrowUpAndDownTest() {
 
-        driver.get(Urls.INPUTS_PAGE);
-        WebElement inputField = driver.findElement(By.xpath("//input[@type='number']"));
-        inputField.click();
-        inputField.sendKeys(Keys.ARROW_UP);
-        inputField.sendKeys(Keys.ARROW_DOWN);
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.clickInputField();
+        inputsPage.clickArrowUp();
+        inputsPage.clickArrowDown();
 
         //Add check
-        String nullValue = inputField.getAttribute("value");
-        Assert.assertEquals(nullValue, "0", "Entered value is not 0!");
+        Assert.assertEquals(inputsPage.checkNullValue(), "0", "Entered value is not 0!");
     }
 
     @Test
     public void inputValueViaArrowDownTest() {
 
-        driver.get(Urls.INPUTS_PAGE);
-        WebElement inputField = driver.findElement(By.xpath("//input[@type='number']"));
-        inputField.click();
-        inputField.sendKeys(Keys.ARROW_DOWN);
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.clickInputField();
+        inputsPage.clickArrowDown();
 
         //Add check
-        String negative = inputField.getAttribute("value");
-        Assert.assertEquals(negative, "-1", "Entered value is not -1!");
+        Assert.assertEquals(inputsPage.checkNegativeValue(), "-1", "Entered value is not -1!");
     }
 
 }
